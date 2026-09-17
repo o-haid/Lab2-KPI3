@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Базові UI Елементи</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="welcome-screen" class="welcome-screen">
+    <h1>Лабораторна робота №2<br>"UI Елементи"</h1>
+    <a href="#" class="lab-link" onclick="showLab(event)">Перехід до реалізації</a>
+</div>
+
+<div id="lab-content" class="container" style="display: none;">
+    <h1>Реалізація UI Елементів</h1>
+
+    <div class="ui-section">
+        <h3>1. Radiobutton (Перемикач)</h3>
+        <p class="description">
+            <strong>Призначення:</strong> Дозволяє користувачеві вибрати <em>лише один</em> варіант із запропонованого списку (взаємовиключний вибір).<br>
+            <strong>Коли використовувати:</strong> Вибір статі, спосіб оплати, тарифний план.<br>
+            <strong>Особливість:</strong> Усі радіокнопки з однаковим <code>name</code> утворюють групу – вибір однієї скасовує інші.
+        </p>
+        <input type="radio" id="option1" name="choice" value="1">
+        <label for="option1">Варіант 1</label><br>
+        <input type="radio" id="option2" name="choice" value="2">
+        <label for="option2">Варіант 2</label><br>
+        <input type="radio" id="option3" name="choice" value="3" checked>
+        <label for="option3">Варіант 3 (обрано за замовчуванням)</label>
+    </div>
+
+    <div class="ui-section">
+        <h3>2. Checkbox (Прапорець)</h3>
+        <p class="description">
+            <strong>Призначення:</strong> Дозволяє вибрати <em>один або кілька</em> варіантів із набору, або бінарний вибір (так/ні).<br>
+            <strong>Коли використовувати:</strong> Згода з правилами, підписка, фільтри товарів.<br>
+            <strong>Відмінність від radiobutton:</strong> Кожен чекбокс незалежний – можна позначити всі, жодного або будь-яку комбінацію.
+        </p>
+        <input type="checkbox" id="check1" name="check1" value="A">
+        <label for="check1">Підписатися на новини</label><br>
+        <input type="checkbox" id="check2" name="check2" value="B">
+        <label for="check2">Згоден з умовами використання</label><br>
+        <input type="checkbox" id="check3" name="check3" value="C" checked disabled>
+        <label for="check3">Обов'язкове поле (disabled)</label>
+    </div>
+
+    <div class="ui-section">
+        <h3>3. Text input (Текстове поле)</h3>
+        <p class="description">
+            <strong>Призначення:</strong> Введення короткого тексту (один рядок) або великого тексту (textarea).<br>
+            <strong>Типи:</strong> <code>text</code> – звичайний текст; <code>email</code> – пошта з валідацією; <code>number</code> – числа; <code>url</code> – веб-адреса; <code>password</code> – прихований текст; <code>textarea</code> – багаторядковий текст.<br>
+            <strong>Атрибути:</strong> <code>placeholder</code> (підказка), <code>required</code> (обов'язкове), <code>maxlength</code> (обмеження).
+        </p>
+
+        <label for="username" class="bold-label">Ім'я користувача (text):</label>
+        <input type="text" id="username" name="username" placeholder="Введіть ваше ім'я" maxlength="30">
+        <br><br>
+
+        <label for="email" class="bold-label">Електронна пошта (email):</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com">
+        <br><br>
+
+        <label for="age" class="bold-label">Вік (number):</label>
+        <input type="number" id="age" name="age" min="1" max="120" value="18">
+        <br><br>
+
+        <label for="website" class="bold-label">Веб-сайт (url):</label>
+        <input type="url" id="website" name="website" placeholder="https://example.com">
+        <br><br>
+
+        <label for="password" class="bold-label">Пароль (password):</label>
+        <input type="password" id="password" name="password" placeholder="••••••••">
+        <br><br>
+
+        <label for="bio" class="bold-label">Про себе (textarea – великий текст):</label><br>
+        <textarea id="bio" name="bio" rows="4" cols="50" placeholder="Розкажіть про себе..."></textarea>
+    </div>
+
+    <div class="ui-section">
+        <h3>4. Tabs (Вкладки)</h3>
+        <p class="description">
+            <strong>Призначення:</strong> Організація контенту по секціях, перемикання без перезавантаження сторінки.<br>
+            <strong>Перевага:</strong> Економить місце, групує споріднену інформацію.<br>
+            <strong>Коли використовувати:</strong> Налаштування профілю, документація, панелі адміністратора.
+        </p>
+        <div class="tab">
+            <button class="tablinks active" onclick="openTab(event, 'Tab1')">Вкладка 1</button>
+            <button class="tablinks" onclick="openTab(event, 'Tab2')">Вкладка 2</button>
+            <button class="tablinks" onclick="openTab(event, 'Tab3')">Вкладка 3</button>
+        </div>
+        <div id="Tab1" class="tabcontent" style="display:block;">
+            <p>Це вміст першої вкладки. Тут може бути будь-який HTML: текст, зображення, форми.</p>
+        </div>
+        <div id="Tab2" class="tabcontent">
+            <p>Це вміст другої вкладки. Вкладки дозволяють не перевантажувати сторінку.</p>
+        </div>
+        <div id="Tab3" class="tabcontent">
+            <p>Це вміст третьої вкладки. Можна додавати скільки завгодно вкладок.</p>
+        </div>
+    </div>
+
+    <div class="ui-section">
+        <h3>5. Button (Кнопка)</h3>
+        <p class="description">
+            <strong>Призначення:</strong> Ініціює дію при натисканні (відправка форми, збереження, запуск скрипта).<br>
+            <strong>Типи:</strong> <code>submit</code> – відправляє форму; <code>reset</code> – очищає форму; <code>button</code> – довільна дія.<br>
+            <strong>Стан:</strong> <code>disabled</code> – кнопка недоступна для натискання.
+        </p>
+        <button type="button" class="demo-btn">Звичайна кнопка</button>
+        <button type="button" class="demo-btn demo-btn-secondary">Другорядна</button>
+        <button type="button" class="demo-btn" disabled>Недоступна</button>
+        <button type="submit" class="demo-btn demo-btn-submit">Відправити</button>
+    </div>
+
+    <div class="ui-section">
+        <h3>6. Text label (Текстова мітка)</h3>
+        <p class="description">
+            <strong>Призначення:</strong> Підпис до елемента керування. Покращує доступність – клік по мітці фокусує пов'язаний input.<br>
+            <strong>Важливо:</strong> Атрибут <code>for</code> мітки має збігатися з <code>id</code> елемента.<br>
+            <strong>Нижче – лише приклади міток різного стилю (без полів).</strong>
+        </p>
+
+        <label class="label-default">Звичайна мітка (label-default)</label><br><br>
+        <label class="label-bold">Жирна мітка (label-bold)</label><br><br>
+        <label class="label-italic">Курсивна мітка (label-italic)</label><br><br>
+        <label class="label-accent">Акцентна оранжева (label-accent)</label><br><br>
+        <label class="label-badge">Мітка-бейдж (label-badge)</label><br><br>
+        <label class="label-required">Обов'язкове поле * (label-required)</label><br><br>
+        <label class="label-small">Дрібна підказка (label-small)</label>
+    </div>
+
+    <div class="ui-section">
+        <h3>7. Link (Посилання)</h3>
+        <p class="description">
+            <strong>Призначення:</strong> Навігація на іншу сторінку, файл, email або частину поточної сторінки.<br>
+            <strong>Атрибут target:</strong> <code>_blank</code> – нова вкладка; <code>_self</code> – поточна (за замовчуванням).<br>
+            <strong>Види:</strong> зовнішні (https://), внутрішні (#anchor), email (mailto:), телефон (tel:).
+        </p>
+        <a href="https://github.com" target="_blank">Перейти на GitHub (нова вкладка)</a><br><br>
+        <a href="mailto:example@kpi.ua">Написати листа</a><br><br>
+        <a href="tel:+380441234567">Зателефонувати</a>
+    </div>
+
+    <div class="ui-section">
+        <h3>8. Tooltip (Спливаюча підказка)</h3>
+        <p class="description">
+            <strong>Призначення:</strong> Показ додаткової інформації при наведенні курсору.<br>
+            <strong>Коли використовувати:</strong> Пояснення термінів, абревіатур, іконок без підписів.<br>
+            <strong>Реалізація:</strong> Чистий CSS через <code>:hover</code> + абсолютне позиціонування.
+        </p>
+        Наведіть курсор на це слово:
+        <div class="tooltip">KPI
+            <span class="tooltiptext">Київський політехнічний інститут імені Ігоря Сікорського</span>
+        </div>
+    </div>
+
+    <div class="ui-section">
+        <h3>9. Dropdown list (Випадаючий список)</h3>
+        <p class="description">
+            <strong>Призначення:</strong> Список варіантів, з якого користувач вибирає один (або кілька).<br>
+            <strong>Перевага:</strong> Економить місце порівняно з radiobuttons для великих списків.<br>
+            <strong>Атрибут multiple:</strong> Дозволяє вибір кількох опцій (Ctrl/Cmd + клік).
+        </p>
+        <label for="courses">Оберіть курс:</label>
+        <select id="courses" name="courses">
+            <option value="1">1 курс</option>
+            <option value="2">2 курс</option>
+            <option value="3" selected>3 курс</option>
+            <option value="4">4 курс</option>
+        </select>
+        <br><br>
+        <label for="langs">Улюблені мови (multiple):</label><br>
+        <select id="langs" name="langs" multiple size="4">
+            <option value="html">HTML</option>
+            <option value="css" selected>CSS</option>
+            <option value="js" selected>JavaScript</option>
+            <option value="py">Python</option>
+        </select>
+    </div>
+
+    <div class="ui-section">
+        <h3>10. Data grid (Таблиця даних)</h3>
+        <p class="description">
+            <strong>Призначення:</strong> Відображення структурованих даних у вигляді рядків та стовпців.<br>
+            <strong>Структура:</strong> <code>&lt;table&gt;</code> → <code>&lt;thead&gt;</code> (заголовки) + <code>&lt;tbody&gt;</code> (дані).<br>
+            <strong>Доступність:</strong> <code>&lt;th scope="col"&gt;</code> допомагає скрін-рідерам.
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Назва предмета</th>
+                    <th scope="col">Кредити</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr><td>1</td><td>Бази даних</td><td>5</td></tr>
+                <tr><td>2</td><td>Алгоритми та структури даних</td><td>4</td></tr>
+                <tr><td>3</td><td>Архітектура ПЗ</td><td>6</td></tr>
+                <tr><td>4</td><td>Веб-програмування</td><td>5</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
